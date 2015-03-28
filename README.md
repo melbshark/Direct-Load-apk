@@ -9,7 +9,7 @@ Direct - load - apk is a very powerful plugin framework, through the use of it, 
 > **Advantage:** 
 > - Direct - load - apk can load a apk all **Resources**. 
 > - Support to jump between the **plugin Activity**. 
-> - Don't like "**[dynamic load - apk](https://github.com/singwhatiwanna/dynamic-load-apk)**" this project, [**"Direct - load - apk"**](https://github.com/asLody/Direct-load-apk) do not need to inherit the custom Activity, and can directly use this pointer. 
+> - Don't like "**[dynamic load - apk](https://github.com/singwhatiwanna/dynamic-load-apk)**" , [**"Direct - load - apk"**](https://github.com/asLody/Direct-load-apk) do not need to inherit the custom Activity, and can directly use this pointer. 
 
 #### <i class="icon-folder-open"></i> ***Usage***
 
@@ -29,7 +29,6 @@ Direct - load - apk is very convenient to use .You can write to start an APK lik
 If you have any question , please send **Email** to here: **382816028@qq.com** , You can also Contact me through **QQ** ：**382816028**。
 
 QQ GROUP：
-Remember the number of it :***362901808***。
+***362901808***。
 
-最后，请允许我说句中文：大家好！
 
