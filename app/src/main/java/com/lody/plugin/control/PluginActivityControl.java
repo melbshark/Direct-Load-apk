@@ -1,9 +1,12 @@
 package com.lody.plugin.control;
 
 import android.app.Activity;
+import android.app.Application;
+import android.app.FragmentManager;
 import android.app.Instrumentation;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.lody.plugin.reflect.Reflect;
 import com.lody.plugin.reflect.ReflectException;
@@ -20,12 +23,20 @@ public class PluginActivityControl implements PluginActivityCaller {
     Activity plugin;
     Reflect proxyRef;
     Reflect pluginRef;
+    Application app;
 
 
 
     public PluginActivityControl(Activity proxy, Activity plugin) {
+
+        this(proxy, plugin,null);
+
+    }
+
+    public PluginActivityControl(Activity proxy, Activity plugin,Application app) {
         this.proxy = proxy;
         this.plugin = plugin;
+        this.app = app;
 
         proxyRef = Reflect.on(proxy);
         pluginRef = Reflect.on(plugin);
@@ -52,21 +63,21 @@ public class PluginActivityControl implements PluginActivityCaller {
             pluginRef.set("mInstrumentation", new LPluginInsrument(instrumentation));
             pluginRef.set("mMainThread", proxyRef.get("mMainThread"));
             pluginRef.set("mEmbeddedID", proxyRef.get("mEmbeddedID"));
-            pluginRef.set("mApplication", proxyRef.get("mApplication"));
+            pluginRef.set("mApplication",app == null ? proxy.getApplication() : app);
             pluginRef.set("mComponent", proxyRef.get("mComponent"));
             pluginRef.set("mActivityInfo", proxyRef.get("mActivityInfo"));
             pluginRef.set("mAllLoaderManagers", proxyRef.get("mAllLoaderManagers"));
             pluginRef.set("mLoaderManager", proxyRef.get("mLoaderManager"));
             if (Build.VERSION.SDK_INT >= 13) {
                 //在android 3.2 以后，Android引入了Fragment.
-                pluginRef.set("mFragments", proxyRef.get("mFragments"));
+                FragmentManager mFragments = proxy.getFragmentManager();
+                pluginRef.set("mFragments", mFragments);
                 pluginRef.set("mContainer", proxyRef.get("mContainer"));
             }
             if (Build.VERSION.SDK_INT >= 12) {
                 //在android 3.0 以后，Android引入了ActionBar.
                 pluginRef.set("mActionBar", proxyRef.get("mActionBar"));
             }
-            pluginRef.set("mCursor", proxyRef.get("mCursor"));
 
             pluginRef.set("mUiThread", proxyRef.get("mUiThread"));
             pluginRef.set("mHandler", proxyRef.get("mHandler"));
@@ -79,6 +90,7 @@ public class PluginActivityControl implements PluginActivityCaller {
         /*  activityEditor.set("mInstanceTracker", thisEditor.get("mInstanceTracker"));
             activityEditor.set("mInstanceTracker", thisEditor.get("mInstanceTracker"));
             activityEditor.set("mInstanceTracker", thisEditor.get("mInstanceTracker"));*/
+
         } catch (ReflectException e) {
             e.printStackTrace();
         }
@@ -164,6 +176,21 @@ public class PluginActivityControl implements PluginActivityCaller {
     @Override
     public void callOnConfigurationChanged() {
         getPluginRef().call("onConfigurationChanged");
+    }
+
+    @Override
+    public void callOnPause() {
+        getPluginRef().call("onStop");
+    }
+
+    @Override
+    public void callOnBackPressed() {
+        getPluginRef().call("onBackPressed");
+    }
+
+    @Override
+    public boolean callOnKeyDown(int keyCode, KeyEvent event) {
+        return getPluginRef().call("onKeyDown",keyCode,event).get();
     }
 
 }

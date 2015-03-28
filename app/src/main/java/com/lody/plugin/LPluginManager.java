@@ -15,6 +15,12 @@ public class LPluginManager{
     private static final Map<String,LPlugin> pluginsMapForPath = new ConcurrentHashMap<String, LPlugin>();
     public static String finalApkPath;
 
+    /**
+     * First,Load from Cache,if return null,than load new Plugin.
+     * @param proxyParent
+     * @param apkPath
+     * @return
+     */
     public static LPlugin loadPlugin(Activity proxyParent,String apkPath){
         finalApkPath = apkPath;
         LPlugin plugin = null;

@@ -21,7 +21,7 @@ public class LPluginDexLoader extends DexClassLoader {
     }
 
     /**
-     * 返回dexPath对应的加载器
+     * 返回apk对应的加载器，不会重复加载同样的资源
      */
     public static LPluginDexLoader getClassLoader(String dexPath, Context cxt,
                                                   ClassLoader parent) {
@@ -29,8 +29,10 @@ public class LPluginDexLoader extends DexClassLoader {
         if (pluginDexLoader == null) {
             // 获取到app的启动路径
             final String dexOutputPath = cxt
-                    .getDir("dex", Context.MODE_PRIVATE).getAbsolutePath();
-            pluginDexLoader = new LPluginDexLoader(dexPath, dexOutputPath, null, parent);
+                    .getDir("plugin", Context.MODE_PRIVATE).getAbsolutePath();
+            final String libOutputPath = cxt
+                    .getDir("plugin_lib", Context.MODE_PRIVATE).getAbsolutePath();
+            pluginDexLoader = new LPluginDexLoader(dexPath, dexOutputPath, libOutputPath, parent);
             pluginLoader.put(dexPath, pluginDexLoader);
         }
         return pluginDexLoader;

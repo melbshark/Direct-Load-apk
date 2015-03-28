@@ -16,7 +16,8 @@ public interface LProxy {
      */
     LPlugin loadPlugin(Activity proxyParent,String apkPath);
     LPlugin loadPlugin(Activity proxyParent,String apkPath ,boolean checkInit);
-
+    LPlugin loadPlugin(Activity proxyParent,String apkPath,String activityName);
+    LPlugin loadPlugin(Activity proxyParent,String apkPath,int index);
     void fillPlugin(LPlugin plugin);
 
 }

@@ -28,4 +28,6 @@ public class LPluginConfig {
      */
     public static final String KEY_PLUGIN_INDEX = "activity_index";
 
+    public static final String ContextImpClassName = "android.app.ContextImpl";
+
 }

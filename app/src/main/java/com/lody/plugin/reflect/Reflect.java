@@ -513,7 +513,7 @@ public class Reflect {
                 return on(method.invoke(object, args));
             }
         } catch (Exception e) {
-            throw new ReflectException(e);
+           throw new ReflectException(e);
         }
     }
 

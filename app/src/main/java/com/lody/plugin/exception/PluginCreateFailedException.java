@@ -6,4 +6,8 @@ package com.lody.plugin.exception;
 public class PluginCreateFailedException extends RuntimeException {
     public PluginCreateFailedException(String msg) {
     }
+
+    public PluginCreateFailedException() {
+
+    }
 }

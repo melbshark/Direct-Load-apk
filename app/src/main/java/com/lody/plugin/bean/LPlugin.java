@@ -42,8 +42,14 @@ public class LPlugin {
     List<IntentFilter> pluginFilters;
     /** 插件的第一个Activity */
     String topActivityName = null;
-    /**插件控制器 */
+    /** 插件控制器 */
     PluginActivityControl control;
+    /** 是否需要重复加载 */
+    boolean isOver = false;
+
+
+    /** 插件的Application名 */
+    String appName;
 
     public boolean isOver() {
         return isOver;
@@ -53,7 +59,14 @@ public class LPlugin {
         this.isOver = isOver;
     }
 
-    boolean isOver = false;
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
 
     /**
      * @return 插件的Application

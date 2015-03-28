@@ -1,4 +1,4 @@
-package com.lody.plugin;
+package com.lody.plugin.exception;
 
 /**
  * Created by lody  on 2015/3/24.

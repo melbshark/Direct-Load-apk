@@ -39,7 +39,7 @@ public class LPluginInsrument extends Instrumentation {
         String className = componentName.getClassName();
         String packageName = componentName.getPackageName();
 
-        //Toast.makeText(who,packageName + "."+className,Toast.LENGTH_LONG).show();
+        //Toast.makeText(who,  className, Toast.LENGTH_LONG).show();
         gotoPluginOrHost.setClass(who, LActivityProxy.class);
         gotoPluginOrHost.putExtra(LPluginConfig.KEY_PLUGIN_DEX_PATH, LPluginManager.finalApkPath);
         gotoPluginOrHost.putExtra(LPluginConfig.KEY_PLUGIN_ACT_NAME,className);
