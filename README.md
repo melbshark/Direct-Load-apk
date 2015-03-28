@@ -26,7 +26,7 @@ Direct - load - apk is very convenient to use .You can write to start an APK lik
 **Author**
 -------------
 	 Lody, from China, who is An ideal are ambitious young man.
-If you have any question , please send **Email** to here: **382816028@qq.com** , You can also Contact me through **QQ** £º**382816028**¡£
+If you have any question , please send **Email** to here: **382816028@qq.com** , You can also Contact me through **QQ**:**382816028**.
 
 ##QQ GROUP:
 ###362901808
